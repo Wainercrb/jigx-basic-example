@@ -1,0 +1,26 @@
+title: Pokedex preview
+type: jig.default
+icon: document
+
+datasources:
+  pokedex-preview: 
+    type: datasource.sqlite
+    options:
+      provider: DATA_PROVIDER_REST
+  
+      entities:
+        - entity: pokedex-preview
+          function: pokedex-function-preview
+          functionParameters: 
+            pokemonName: =@ctx.jig.inputs.pokemonName
+      query: |
+        SELECT '$.slot', '$.base_experience', '$.sprites.back_default' as img FROM [pokedex-preview]
+
+children:
+  - type: component.image
+    options:
+      title: =@ctx.jig.inputs.pokemonName
+      subtitle: ="Exp:" & " " & @ctx.datasources.pokedex-preview.base_experience
+      source:
+        uri: =@ctx.datasources.pokedex-preview.img
+

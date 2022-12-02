@@ -1,0 +1,10 @@
+name: basic-jigx-app
+title: basic-jigx-app
+category: analytics
+widgets:
+  - size: "2x2"
+    jigId: new-customer
+  - size: "2x2"
+    jigId: list-customer
+  - size: "2x2"
+    jigId: pokedex

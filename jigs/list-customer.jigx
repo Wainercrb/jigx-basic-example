@@ -1,0 +1,21 @@
+title: List Customers
+type: jig.list
+icon: list 
+
+datasources:
+  customerList: 
+    type: datasource.sqlite
+    options:
+      provider: DATA_PROVIDER_DYNAMIC
+  
+      entities:
+        - default/customers
+  
+      query: SELECT id, '$.firstName', '$.lastName', '$.email' FROM [default/customers]
+
+data: =@ctx.datasources.customerList
+item: 
+  type: component.list-item
+  options:
+    title: =@ctx.current.item.firstName & " " & @ctx.current.item.lastName
+    subtitle: =@ctx.current.item.email

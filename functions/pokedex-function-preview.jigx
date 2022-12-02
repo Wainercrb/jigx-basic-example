@@ -1,0 +1,9 @@
+provider: DATA_PROVIDER_REST
+url: https://pokeapi.co/api/v2/pokemon/{pokemonName}
+method: GET
+outputTransform: $
+parameters:
+  pokemonName:
+    type: string
+    location: path
+    required: true
