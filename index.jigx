@@ -2,7 +2,7 @@ name: basic-jigx-app
 title: basic-jigx-app
 category: analytics
 widgets:
-  - size: "2x2" # choose size of the widget on the home hub
+  - size: "2x2"
     jigId: new-customer
   - size: "2x2"
     jigId: list-customer
