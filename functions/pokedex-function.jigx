@@ -1,0 +1,4 @@
+provider: DATA_PROVIDER_REST
+url: https://pokeapi.co/api/v2/pokemon?offset=0&limit=20
+method: GET
+outputTransform: $.results

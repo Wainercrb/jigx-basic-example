@@ -1,0 +1,35 @@
+title: Pokedex
+type: jig.list
+icon: list
+
+datasources:
+  pokedex: 
+    type: datasource.sqlite
+    options:
+      provider: DATA_PROVIDER_REST
+  
+      entities:
+        - entity: pokedex-entries
+          function: pokedex-function
+          functionParameters: 
+            basicAuth: weather.basicAuth
+      query: |
+        SELECT '$.name', '$.url' FROM [pokedex-entries]
+
+data: =@ctx.datasources.pokedex
+item: 
+  type: component.list-item
+  options:
+    title: =@ctx.current.item.name
+    subtitle: =@ctx.current.item.url
+    leftElement: 
+      element: icon
+      name: ='arrow-right'
+    onPress: 
+      type: action.go-to
+      options:
+        linkTo: pokedex-preview
+        parameters: 
+          pokemonName: =@ctx.current.item.name
+          
+          
